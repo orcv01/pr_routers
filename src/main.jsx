@@ -1,29 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
-//Importamos todas las paginas
-import Home from './pages/Home';
-import Heroe from './pages/Heroe';
-import About from './pages/About';
-import NotFound from './pages/NotFound';
-//Importamos los 3 componentes necesarios para enrutar la aplicación
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import App from './App'
+import './index.css'
+// Import Pages
+import Home from './pages/Home/Home';
+import About from './pages/About/About';
+import Heroes from './pages/Heroes/Heroes';
+import Heroe from './pages/Heroe/Heroe';
 
-import './index.css';
-
-
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter basename="/">
       <Routes>
-        
-          <Route path="/" element={<App />}>
-            <Route index element={<Home />} />
-            <Route path="/Heroe" element={<Heroe />} />
-            <Route path="/About" element={<About />} />
-          <Route path="*" element={<NotFound />} />
+        <Route path="/" element={<App />}>
+        <Route index element={<Home />} />
+        <Route path="heroes" element={<Heroes />} />
+        <Route path='/heroe/:id' element={<Heroe />} />
+        <Route path="about" element={<About />} />
+        <Route path="*" element={<main><p>404 - No existe la ruta!</p></main>}></Route>
         </Route>
       </Routes>
-    </BrowserRouter>    
+    </BrowserRouter>
   </React.StrictMode>
 )
